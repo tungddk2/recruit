@@ -2,6 +2,7 @@ import {Button, Form, Input, Typography} from "antd";
 import {LockOutlined, MailOutlined} from "@ant-design/icons";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import React from "react";
+import {Link} from "react-router-dom";
 
 const styles = {
     sm: {
@@ -24,7 +25,8 @@ const styles = {
 const FormItem = (props: any) => {
     // add style to Form.Item
     let _style = {
-        width: "100%", height: "fit-content", marginBottom: 0
+        width: "100%", height: "fit-content", marginBottom: 0,
+        minHeight: "fit-content",
     };
 
     const { style, ...others } = props;
@@ -34,6 +36,7 @@ const FormItem = (props: any) => {
             ...style,
             width: "100%",
             height: "fit-content",
+            minHeight: "fit-content",
             marginBottom: 0,
         }
     }
@@ -69,8 +72,8 @@ export default function SignIn(): JSX.Element {
                     <Input.Password prefix={<LockOutlined />} />
                 </FormItem>
 
-                <FormItem style={{ textAlign: "right" }}>
-                    <a href="#">Quên mật khẩu?</a>
+                <FormItem style={{ textAlign: "right", maxHeight: "22px" }}>
+                    <Button type="link" style={{ fontSize: "12px", padding: 0, maxHeight: "22px" }}> Quên mật khẩu? </Button>
                 </FormItem>
 
                 <FormItem>

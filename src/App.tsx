@@ -10,6 +10,9 @@ import SignIn from "./components/signin/SignIn";
 const theme = {
     token: {
         colorPrimary: '#005773',
+        colorLink: '#005773',
+        colorLinkHover: '#007da5',
+        colorLinkActive: '#00374d'
     }
 }
 
