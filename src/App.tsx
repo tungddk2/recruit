@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import Button from "./components/common/Button";
 import SignIn from "./components/signin/SignIn";
+import SearchJob from "./components/search-job/SearchJob";
 
 const theme = {
   token: {
@@ -21,6 +22,7 @@ function App() {
     <ConfigProvider theme={theme}>
       <Routes>
         <Route path="/" element={<SignIn />} />
+        <Route path="/search" element={<SearchJob />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </ConfigProvider>
