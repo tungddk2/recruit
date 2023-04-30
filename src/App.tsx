@@ -1,10 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
 import "antd/dist/reset.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import Button from "./components/common/Button";
 import SignIn from "./components/signin/SignIn";
 
 const theme = {
