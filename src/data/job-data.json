@@ -1,0 +1,23 @@
+[
+  {
+    "datails": "Job for fun but not funny 1",
+    "job": 2,
+    "place": 1,
+    "company": 0,
+    "salary": 1000000
+  },
+  {
+    "datails": "Job for fun but not funny 2",
+    "job": 3,
+    "place": 0,
+    "company": 2,
+    "salary": 2000000
+  },
+  {
+    "datails": "Job for fun but not funny 3",
+    "job": 0,
+    "place": 2,
+    "company": 1,
+    "salary": 3000000
+  }
+]
