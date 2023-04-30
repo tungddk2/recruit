@@ -1,11 +1,195 @@
 .background {
   /* Rectangle 85 */
+  height: 382px;
+  width: 1440px;
+  left: 0px;
+  top: 0px;
+  border-radius: 0px;
+  background: #00577326;
+}
+
+.companypicture {
+  background-color: white;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  left: 87px;
+  top: 94px;
+  color: black;
+}
+
+.vacancy {
+  height: 35px;
+  border-radius: nullpx;
+  position: absolute;
+  width: 276px;
+  height: 35px;
+  left: 377px;
+  top: 100px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 35px;
+
+  color: #000000;
+}
+.companyname {
+  /* Tên công ty */
 
   position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
+  width: 103px;
+  height: 23px;
+  left: 377px;
+  top: 147px;
 
-  background: rgba(0, 87, 115, 0.15);
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000000;
+}
+
+.place {
+  /* Nơi làm việc: */
+
+  position: absolute;
+  height: 24px;
+  left: 404px;
+  top: 187px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  color: #000000;
+}
+.place-icon {
+  left: 377px;
+  top: 187px;
+
+  position: absolute;
+}
+.salary-icon {
+  /* Vector */
+  top: 187px;
+
+  left: 671px;
+  position: absolute;
+
+  /* Character/Title .85 */
+}
+.salary {
+  /* Lương: */
+
+  position: absolute;
+  height: 24px;
+  left: 698px;
+  top: 187px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  color: #000000;
+}
+.posted-date {
+  /* Ngày đăng: dd/mm/yy */
+
+  position: absolute;
+  width: 199px;
+  height: 24px;
+  left: 1088px;
+  top: 105px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+
+  color: #898484;
+}
+
+.apply-button {
+  /* Button
+
+按钮, btn, Кнопка
+*/
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 15px;
+  gap: 10px;
+
+  position: absolute;
+  width: 199px;
+  height: 57px;
+  left: 1088px;
+  top: 161px;
+
+  /* Primary Background
+
+Button, ...
+*/
+  background: #005773;
+  /* Primary Background
+
+Button, ...
+*/
+  border: 1px solid #005773;
+  /* drop-shadow/button-primary */
+
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 8px;
+}
+
+.save-job-button {
+  /* Button
+
+  按钮, btn, Кнопка
+  */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  height: 57px;
+  width: 199px;
+  left: 1088px;
+  top: 250px;
+  padding: 4px 15px 4px 15px;
+
+  position: absolute;
+
+  /* Neutral/1 */
+
+  background: #ffffff;
+  border: 1px dashed #d9d9d9;
+  /* drop-shadow/button-secondary */
+
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
+  border-radius: 8px;
 }

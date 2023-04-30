@@ -7,6 +7,7 @@ import { ConfigProvider } from "antd";
 import Button from "./components/common/Button";
 import SignIn from "./components/signin/SignIn";
 import SearchJob from "./components/search-job/SearchJob";
+import JobOverview from "./components/job-overview/JobOverview";
 
 const theme = {
   token: {
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/search" element={<SearchJob />} />
+        <Route path="/job-overview/:id" element={<JobOverview />} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </ConfigProvider>

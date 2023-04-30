@@ -21,10 +21,12 @@ export enum CompanyCode {
 }
 
 export type Jobs = {
+  id: number;
   datails: string;
   job: JobTypeCode;
   place: PlaceCode;
   company: CompanyCode;
   salary: number;
+  avatarUrl?: string;
 };
 export const rawData: Jobs[] = JSON.parse(JSON.stringify(rawScripts));
