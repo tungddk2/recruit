@@ -31,7 +31,7 @@ const styles: {sm: React.CSSProperties, default: React.CSSProperties} = {
 	},
 };
 
-const FormItem = (props: any) => {
+export const FormItem = (props: any) => {
 	// add style to Form.Item
 	let _style = {
 		width: "100%",
@@ -82,14 +82,14 @@ export default function SignIn(): ReactElement {
 					console.log(values);
 				}}
 			>
-				<FormItem style={{ textAlign: "right", marginRight: "-2rem" }} >
+				<FormItem style={{ textAlign: "right", marginRight: "-2rem" }}>
 					<Tooltip title="Đóng">
 						<Button type="text" shape="circle" icon={<CloseOutlined />} />
 					</Tooltip>
 				</FormItem>
 				<FormItem>
 					<Typography.Title level={3} style={{ textAlign: "center" }}>
-						Đăng nhập
+						Trải nghiệm cùng Recruit
 					</Typography.Title>
 				</FormItem>
 
