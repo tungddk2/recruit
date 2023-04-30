@@ -1,11 +1,22 @@
-import {Button, Divider, Form, Input, Row, Typography} from "antd";
+import {Button, Divider, Form, Input, Row, Tooltip, Typography} from "antd";
 import { CloseOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
 import useBreakpoints from "../../hooks/useBreakpoints";
-import {ReactElement, useEffect} from "react";
+import {ReactElement} from "react";
 import {GoogleIcon} from "../common/icons/GoogleIcon";
 
-const styles = {
-	sm: {},
+const styles: {sm: React.CSSProperties, default: React.CSSProperties} = {
+	sm: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		padding: "0.5rem 1rem",
+		gap: "10px",
+		width: "100vw",
+		height: "fit-content",
+		borderRadius: "8px",
+		backgroundColor: "white",
+		flexDirection: "inherit",
+	},
 	default: {
 		display: "flex",
 		flexDirection: "column",
@@ -51,12 +62,6 @@ export default function SignIn(): ReactElement {
 
 	const [form] = Form.useForm();
 
-	const validToContinue = () => {
-		return form.getFieldValue("email") && form.getFieldValue("password");
-	}
-
-	console.log(form.getFieldsValue());
-
 	return (
 		<div
 			style={{
@@ -77,8 +82,10 @@ export default function SignIn(): ReactElement {
 					console.log(values);
 				}}
 			>
-				<FormItem style={{ textAlign: "right", marginRight: "-2rem" }}>
-					<Button type="text" shape="circle" icon={<CloseOutlined />} />
+				<FormItem style={{ textAlign: "right", marginRight: "-2rem" }} >
+					<Tooltip title="Đóng">
+						<Button type="text" shape="circle" icon={<CloseOutlined />} />
+					</Tooltip>
 				</FormItem>
 				<FormItem>
 					<Typography.Title level={3} style={{ textAlign: "center" }}>
@@ -90,7 +97,7 @@ export default function SignIn(): ReactElement {
 					name="email"
 					rules={[{ required: true, message: "Vui lòng nhập email của bạn!" }]}
 				>
-					<Input prefix={<MailOutlined />} placeholder="account@gmail.com" />
+					<Input size="large" prefix={<MailOutlined />} placeholder="account@gmail.com" />
 				</FormItem>
 
 				<FormItem
@@ -99,7 +106,7 @@ export default function SignIn(): ReactElement {
 						{ required: true, message: "Vui lòng nhập mật khẩu của bạn!" },
 					]}
 				>
-					<Input.Password prefix={<LockOutlined />} />
+					<Input.Password size="large" prefix={<LockOutlined />} />
 				</FormItem>
 
 				<FormItem style={{ textAlign: "right", height: "22px" }}>
