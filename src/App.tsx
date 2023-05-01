@@ -8,6 +8,8 @@ import SignUp from "./components/SignUp/SignUp";
 import HrBanner from "./components/HrBanner/HrBanner";
 import SearchJob from "./components/SearchJob/SearchJob";
 import JobOverview from "./components/JobOverview/JobOverview";
+import FutureJobIcon from "./components/FutureJobs/FutureJobIcon";
+import {LaptopOutlined} from "@ant-design/icons";
 
 const theme = {
   token: {
@@ -21,20 +23,20 @@ const theme = {
 };
 
 function App() {
-  return (
-    <ConfigProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<HrBanner />} />
-        <Route path="/sign-up">
-          <Route path="user" element={<SignUp role="user" />} />
-          <Route path="company" element={<SignUp role="company" />} />
-        </Route>
+	return (
+		<ConfigProvider theme={theme}>
+			<Routes>
+				<Route path="/" element={<FutureJobIcon icon={<LaptopOutlined/>} title="CNTT" numJob={2950} />}/>
+				<Route path="/sign-up">
+					<Route path="user" element={<SignUp role="user" />} />
+					<Route path="company" element={<SignUp role="company" />} />
+				</Route>
         <Route path="/search-job" element={<SearchJob />} />
         <Route path="/job-overview" element={<JobOverview />} />
-        <Route path="*" element={<div>404</div>} />
-      </Routes>
-    </ConfigProvider>
-  );
+				<Route path="*" element={<div>404</div>} />
+			</Routes>
+		</ConfigProvider>
+	);
 }
 
 export default App;
