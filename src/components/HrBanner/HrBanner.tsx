@@ -7,14 +7,16 @@ import {SizeType} from "antd/es/config-provider/SizeContext";
 const containerStyle = {
 	xs: {
 		width: "100%",
-		height: "140px",
+		minHeight: "140px",
+		height: "fit-content",
 		backgroundColor: "rgba(0, 87, 115, 0.1)",
 		padding: "0px 16px",
 		margin: 0,
 	},
 	sm: {
 		width: "100%",
-		height: "187px",
+		minHeight: "187px",
+		height: "fit-content",
 		backgroundColor: "rgba(0, 87, 115, 0.1)",
 		padding: "0px 32px",
 		margin: 0,
@@ -59,61 +61,74 @@ export default function HrBanner(): ReactElement {
 			? containerStyle.sm
 			: containerStyle.xs;
 
-	const _sloganMargin = checker.greaterOrEqualThan("md")
-		? "50px -20px auto 0px"
-		: checker.greaterOrEqualThan("sm")
-			? "45px 0px auto 0px"
-			: "25px -20px auto 0px";
-
 	const _sloganFontSize = checker.greaterOrEqualThan("md")
-		? "30px"
+		? "32px"
 		: checker.greaterOrEqualThan("sm")
 			? "20px" : "12px";
 
 	const _buttonContainerMarginTop = checker.greaterOrEqualThan("md")
-		? "50px"
+		? "54px"
 		: checker.greaterOrEqualThan("sm")
-			? "30px" : "10px";
+			? "40px" : "16px";
 
-	const buttonSize = (checker.greaterOrEqualThan("md") ? "large" : "medium") as SizeType;
+	const buttonStyle = checker.greaterOrEqualThan("md") ? {
+		width: "450px",
+		height: "83px",
+		minWidth: "fit-content",
+		minHeight: "fit-content",
+	} : {
+		width: "100%",
+		height: "fit-content",
+	}
 
 	return (
 		<Row
-			gutter={{ md: 20, sm: 32, xs: 16}}
 			style={_containerStyle}
 		>
-			<Col span={12} style={{ padding: 0 }}>
-				<Typography.Text style={{
-					fontFamily: "Pacifico",
-					fontSize: _sloganFontSize,
-					display: "block",
-					width: "100%",
-					margin: _sloganMargin,
-				}}>
-					Nếu bạn đang cần tìm những ứng viên tài giỏi, chất lượng, hãy đăng tin ứng tuyển ngay tại đây !
-				</Typography.Text>
-
-				<div style={{ width: "100%", marginTop: _buttonContainerMarginTop }}>
-					<Button type="primary" size={buttonSize} style={{ height: "fit-content", width: "100%" }}>
-						{
-							checker.greaterOrEqualThan("md")
-								? <Typography.Title level={2} style={{ color: "#fff", margin: 0 }}>Đăng tin ứng tuyển</Typography.Title>
-								: checker.greaterOrEqualThan("sm")
-									? <Typography.Title level={3} color="#fff">Đăng tin ứng tuyển</Typography.Title>
-									: "Đăng tin"
-						}
-					</Button>
-				</div>
-			</Col>
-			<Col span={12} style={{ padding: 0 }}>
+			<Col span={12} style={{ padding: 0, display: "flex", alignItems: "center" }}>
 				<div style={{
 					width: "100%",
-					height: "100%",
+					height: "fit-content",
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+					alignItems: "center",
+				}}>
+					<Typography.Text style={{
+						fontFamily: "Pacifico",
+						fontSize: _sloganFontSize,
+						display: "block",
+						width: "100%",
+					}}>
+						Nếu bạn đang cần tìm những ứng viên tài giỏi, chất lượng, hãy đăng tin ứng tuyển ngay tại đây !
+					</Typography.Text>
+
+					<div style={{ width: "fit-content", marginTop: _buttonContainerMarginTop }}>
+						<Button type="primary" style={buttonStyle}>
+							{
+								checker.greaterOrEqualThan("md")
+									? <Typography.Title level={2} style={{ color: "#fff", margin: 0 }}>Đăng tin ứng tuyển</Typography.Title>
+									: checker.greaterOrEqualThan("sm")
+										? <Typography.Text style={{ color: "#fff", margin: 0, fontSize: "16px" }}>Đăng tin ứng tuyển</Typography.Text>
+										: "Đăng tin"
+							}
+						</Button>
+					</div>
+				</div>
+			</Col>
+			<Col span={12} style={{ padding: 0, display: "flex", alignItems: "center" }}>
+				<div style={{
+					width: "100%",
+					height: "fit-content",
 					display: "flex",
 					justifyContent: "center",
 				}}>
 					<ImageContainer
 						src={require("../../assets/hr-banner.png")}
+						style={{
+							width: "100%", height: "auto",
+							maxWidth: "100%",
+						}}
 						preview={false}
 					/>
 				</div>

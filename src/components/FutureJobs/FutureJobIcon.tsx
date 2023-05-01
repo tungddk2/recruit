@@ -1,12 +1,13 @@
-import {ReactElement, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {Card, Tooltip} from "antd";
 import Icon, {LaptopOutlined} from "@ant-design/icons";
 import useHover from "../../hooks/useHover";
 import "./icon.css";
+import useBreakpoints from "../../hooks/useBreakpoints";
 
 const { Meta } = Card;
 
-type FutureJobIconProps = {
+export type FutureJobIconProps = {
 	icon: JSX.Element;
 	title: string;
 	numJob: string | number;
@@ -17,26 +18,16 @@ export default function FutureJobIcon(props: FutureJobIconProps = {
 	title: "CNTT",
 	numJob: "2950",
 }): ReactElement {
-	const [iconSize, setIconSize] = useState<string>("50px");
+	const checker = useBreakpoints();
+	const isDesktop = checker.greaterOrEqualThan("sm");
 
-	const iconStyle = useHover({
-		fontSize: "64px",
-	}, {
-		fontSize: "50px",
-		color: "#00635E",
-		animationTimingFunction: "ease-out",
-		animationDuration: "300ms",
-	});
+	console.log(isDesktop);
 
-	const bodyStyle = useHover({
-		padding: "0",
-		height: "fit-content",
-	}, {
-		padding: "0",
-		height: "fit-content",
-		animationTimingFunction: "ease-out",
-		animationDuration: "300ms",
-	}, false);
+	const [iconSize, setIconSize] = useState<string>(isDesktop ? "50px" : "25px");
+
+	useEffect(() => {
+		setIconSize(isDesktop ? "50px" : "25px");
+	},[isDesktop]);
 
 	return (
 		<Card
@@ -44,26 +35,24 @@ export default function FutureJobIcon(props: FutureJobIconProps = {
 			style={{
 				width: "fit-content",
 				height: "fit-content",
+				margin: 0,
 			}}
 			bodyStyle={{
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
-				width: "240px",
-				height: "212px",
-				gap: "10px",
-				padding: "25px 42px",
-				transition: "width 300ms",
-				transitionTimingFunction: "ease-out",
+				width: isDesktop ? "240px" : "100px",
+				height: isDesktop ? "212px" : "109px",
+				gap: isDesktop ? "10px" : "5px",
+				padding: isDesktop ? "25px 42px" : "10px 0",
 			}}
-			className="icon-container"
-			onMouseEnter={() => setIconSize("64px")}
-			onMouseLeave={() => setIconSize("50px")}
+			onMouseEnter={() => setIconSize(isDesktop ? "64px" : "32px")}
+			onMouseLeave={() => setIconSize(isDesktop ? "50px" : "25px")}
 		>
 			<Card
 				style={{
-					padding: "25px",
+					padding: isDesktop ? "20px 25px" : "10px 18px",
 					width: "fit-content",
 					height: "fit-content",
 					borderRadius: "8px",
@@ -77,7 +66,11 @@ export default function FutureJobIcon(props: FutureJobIconProps = {
 				<Icon component={props.icon.type} style={{ fontSize: iconSize, color: "#00635E" }} />
 			</Card>
 			<Tooltip title={props.title} placement={"bottom"}>
-				<Meta title={props.title} description={`${props.numJob} việc làm`} style={{ textAlign: "center", width: "100%" }}/>
+				<Meta
+					title={<div style={{ fontSize: isDesktop ? "16px" : "12px" }}>{props.title}</div>}
+					description={<h4 style={{ fontSize: isDesktop ? "14px" : "11px" }}>{`${props.numJob} việc làm`}</h4>}
+					style={{ textAlign: "center", width: "100%" }}
+				/>
 			</Tooltip>
 		</Card>
 	)

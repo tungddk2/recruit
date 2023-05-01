@@ -1,6 +1,7 @@
-.icon-container {
+.anticon > .anticon {
+    transition: 300ms ease-out;
 }
 
-.icon-container:hover > div > div > div {
-    font-size: 64px;
+.ant-card-meta-description {
+    color: rgba(0, 0, 0, 0.5) !important;
 }
