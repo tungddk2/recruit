@@ -1,7 +1,6 @@
 import {ReactElement, useEffect, useState} from "react";
 import {Card, Tooltip} from "antd";
 import Icon, {LaptopOutlined} from "@ant-design/icons";
-import useHover from "../../hooks/useHover";
 import "./icon.css";
 import useBreakpoints from "../../hooks/useBreakpoints";
 
@@ -20,8 +19,6 @@ export default function FutureJobIcon(props: FutureJobIconProps = {
 }): ReactElement {
 	const checker = useBreakpoints();
 	const isDesktop = checker.greaterOrEqualThan("sm");
-
-	console.log(isDesktop);
 
 	const [iconSize, setIconSize] = useState<string>(isDesktop ? "50px" : "25px");
 

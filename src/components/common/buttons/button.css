@@ -1,0 +1,11 @@
+.ant-btn-circle {
+    background-color: transparent;
+    border: 1px solid #d9d9d9;
+    color: #fff;
+}
+
+.ant-btn-circle:hover {
+    background-color: #fff;
+    border-color: #fff;
+    color: #005773;
+}

@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Button, Col, Layout, Row, Typography} from "antd";
+import {Button, Col, Row, Typography} from "antd";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import FutureJobIcon, {FutureJobIconProps} from "./FutureJobIcon";
 import {
@@ -46,7 +46,7 @@ export default function FutureJobsList(): ReactElement {
 			}}>
 				{
 					jobsList.map((job, index) => (
-						<Col xs={8} sm={6} md={6} style={{ display: "flex", justifyContent: "center" }}>
+						<Col xs={8} sm={6} md={6} style={{ display: "flex", justifyContent: "center" }} key={index}>
 							<FutureJobIcon {...job} />
 						</Col>
 					))

@@ -1,8 +1,7 @@
-import React, {ReactElement, useEffect, useState} from "react";
+import React, {ReactElement} from "react";
 import {Button, Col, Row, Typography} from "antd";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import ImageContainer from "../common/images/ImageContainer";
-import {SizeType} from "antd/es/config-provider/SizeContext";
 
 const containerStyle = {
 	xs: {
@@ -27,28 +26,6 @@ const containerStyle = {
 		backgroundColor: "rgba(0, 87, 115, 0.1)",
 		padding: "0px 20px",
 		margin: 0,
-	}
-}
-
-const imageStyle = {
-	xs: {
-		width: "100%",
-		height: "100%",
-	},
-	sm: {
-		width: "100%",
-		height: "167px",
-		margin: "10px 0px",
-	},
-	md: {
-		width: "100%",
-		height: "400px",
-		margin: "25px 0px",
-	},
-	lg: {
-		width: "100%",
-		height: "400px",
-		margin: "25px 0px",
 	}
 }
 

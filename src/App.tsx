@@ -3,14 +3,8 @@ import "antd/dist/reset.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
-import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
-import HrBanner from "./components/HrBanner/HrBanner";
-import FutureJobIcon from "./components/FutureJobs/FutureJobIcon";
-import {LaptopOutlined} from "@ant-design/icons";
-import FutureJobsList from "./components/FutureJobs/FutureJobLists";
-import HeaderBanner from "./components/HeaderBanner/HeaderBanner";
-import SubcribePane from "./components/SubcribePane/SubcribePane";
+import Footer from "./components/Footer/Footer";
 
 const theme = {
 	token: {
@@ -27,7 +21,9 @@ function App() {
 	return (
 		<ConfigProvider theme={theme}>
 			<Routes>
-				<Route path="/" element={<SubcribePane />}/>
+				<Route path="/" element={
+					<Footer />
+				}/>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />
 					<Route path="company" element={<SignUp role="company" />} />

@@ -9,7 +9,7 @@ export const breakpoints: Record<string, number> = {
 	xl: 1600,
 }
 
-type BreakpointChecker = {
+export type BreakpointChecker = {
 	smallerThan: (size: number | string) => boolean;
 	greaterOrEqualThan: (size: number | string) => boolean;
 	between: (min: number | string, max: number | string) => boolean;

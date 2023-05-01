@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Button, Col, Input, Row, Space, Typography} from "antd";
+import {Button, Col, Input, Row, Space} from "antd";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import "./SubcribePane.css";
 
