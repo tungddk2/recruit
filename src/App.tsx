@@ -6,31 +6,35 @@ import { ConfigProvider } from "antd";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import HrBanner from "./components/HrBanner/HrBanner";
+import SearchJob from "./components/SearchJob/SearchJob";
+import JobOverview from "./components/JobOverview/JobOverview";
 
 const theme = {
-	token: {
-		colorPrimary: "#005773",
-		colorLink: "#005773",
-		colorLinkHover: "#007da5",
-		colorLinkActive: "#00374d",
-		borderRadius: 8,
-		borderRadiusLG: 8,
-	},
+  token: {
+    colorPrimary: "#005773",
+    colorLink: "#005773",
+    colorLinkHover: "#007da5",
+    colorLinkActive: "#00374d",
+    borderRadius: 8,
+    borderRadiusLG: 8,
+  },
 };
 
 function App() {
-	return (
-		<ConfigProvider theme={theme}>
-			<Routes>
-				<Route path="/" element={<HrBanner />}/>
-				<Route path="/sign-up">
-					<Route path="user" element={<SignUp role="user" />} />
-					<Route path="company" element={<SignUp role="company" />} />
-				</Route>
-				<Route path="*" element={<div>404</div>} />
-			</Routes>
-		</ConfigProvider>
-	);
+  return (
+    <ConfigProvider theme={theme}>
+      <Routes>
+        <Route path="/" element={<HrBanner />} />
+        <Route path="/sign-up">
+          <Route path="user" element={<SignUp role="user" />} />
+          <Route path="company" element={<SignUp role="company" />} />
+        </Route>
+        <Route path="/search-job" element={<SearchJob />} />
+        <Route path="/job-overview" element={<JobOverview />} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
+    </ConfigProvider>
+  );
 }
 
 export default App;
