@@ -14,12 +14,13 @@ export interface SignUpProps {
 
 export default function SignUp(props: SignUpProps): ReactElement {
 	const navigate = useNavigate();
+	const checker = useBreakpoints();
 
 	return (
 		<div style={{
 			width: "100%",
 			height: "100vh",
-			display: useBreakpoints().greaterThan("sm") ? "flex": "block",
+			display: checker.greaterOrEqualThan("sm") ? "flex": "block",
 			flexDirection: "column",
 			justifyContent: "center",
 		}}>
@@ -28,7 +29,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
 				height: "fit-content",
 			}}>
 				<Col sm={24} md={12} style={{
-					padding: useBreakpoints().greaterThan("sm") ? "2.5rem 3rem" : "1rem 1.5rem",
+					padding: checker.greaterOrEqualThan("sm") ? "2.5rem 3rem" : "1rem 1.5rem",
 				}}>
 					<Form
 						style={{
@@ -38,7 +39,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
 							flexDirection: "column",
 							justifyContent: "center",
 							gap: "1rem",
-							padding: useBreakpoints().greaterThan("sm") ? "20px 1rem" : "20px 0",
+							padding: checker.greaterOrEqualThan("sm") ? "20px 1rem" : "20px 0",
 						}}
 						layout={"vertical"}
 					>

@@ -6,6 +6,8 @@ import { ConfigProvider } from "antd";
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import HrBanner from "./components/HrBanner/HrBanner";
+import FutureJobIcon from "./components/FutureJobs/FutureJobIcon";
+import {LaptopOutlined} from "@ant-design/icons";
 
 const theme = {
 	token: {
@@ -22,7 +24,7 @@ function App() {
 	return (
 		<ConfigProvider theme={theme}>
 			<Routes>
-				<Route path="/" element={<HrBanner />}/>
+				<Route path="/" element={<FutureJobIcon icon={<LaptopOutlined/>} title="CNTT" numJob={2950} />}/>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />
 					<Route path="company" element={<SignUp role="company" />} />

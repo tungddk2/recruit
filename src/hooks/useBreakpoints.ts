@@ -1,49 +1,76 @@
 import { useEffect, useState } from "react";
 import { Breakpoint } from "antd";
 
-export default function useBreakpoints() {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>("xs");
+export const breakpoints: Record<string, number> = {
+	xs: 576,
+	sm: 768,
+	md: 992,
+	lg: 1200,
+	xl: 1600,
+}
 
-  useEffect(() => {
-    const onResize = () => {
-      const width = window.innerWidth;
-      if (width < 576) {
-        setBreakpoint("xs");
-      } else if (width < 768) {
-        setBreakpoint("sm");
-      } else if (width < 992) {
-        setBreakpoint("md");
-      } else if (width < 1200) {
-        setBreakpoint("lg");
-      } else {
-        setBreakpoint("xl");
-      }
-    };
+type BreakpointChecker = {
+	smallerThan: (size: number | string) => boolean;
+	greaterOrEqualThan: (size: number | string) => boolean;
+	between: (min: number | string, max: number | string) => boolean;
+}
 
-    window.addEventListener("resize", onResize);
-    onResize();
+export default function useBreakpoints(): BreakpointChecker {
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [_, setBreakpoint] = useState<Breakpoint>("xs");
 
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, []);
+	useEffect(() => {
+		const onResize = () => {
+			const width = window.innerWidth;
+			for (const key in breakpoints) {
+				if (width < breakpoints[key]) {
+					setBreakpoint(key as Breakpoint);
+					break;
+				}
+			}
+		};
 
-  const sizeArray = ["xs", "sm", "md", "lg", "xl"] as Breakpoint[];
+		window.addEventListener("resize", onResize);
+		onResize();
 
-  const smallerOrEqualThan = (size: Breakpoint) => {
-    return sizeArray.indexOf(breakpoint) <= sizeArray.indexOf(size);
-  };
+		return () => {
+			window.removeEventListener("resize", onResize);
+		};
+	}, []);
 
-  const greaterThan = (size: Breakpoint) => {
-    return sizeArray.indexOf(breakpoint) > sizeArray.indexOf(size);
-  };
+	return {
+		smallerThan: (size: number | string) => {
+			if (typeof size === "number")
+				return window.innerWidth < breakpoints[size];
+			if (!(size in breakpoints))
+				return false;
+			return window.innerWidth < breakpoints[size];
+		},
+		greaterOrEqualThan: (size: number | string) => {
+			if (typeof size === "number")
+				return window.innerWidth >= breakpoints[size];
+			if (!(size in breakpoints))
+				return false;
+			return window.innerWidth >= breakpoints[size];
+		},
+		between: (min: number | string, max: number | string) => {
+			let minSize: number;
+			let maxSize: number;
+			if (typeof min === "number")
+				minSize = min;
+			else if (min in breakpoints)
+				minSize = breakpoints[min];
+			else
+				return false;
 
-  const between = (min: Breakpoint, max: Breakpoint) => {
-    return (
-      sizeArray.indexOf(breakpoint) >= sizeArray.indexOf(min) &&
-      sizeArray.indexOf(breakpoint) < sizeArray.indexOf(max)
-    );
-  };
+			if (typeof max === "number")
+				maxSize = max;
+			else if (max in breakpoints)
+				maxSize = breakpoints[max];
+			else
+				return false;
 
-  return { breakpoint, smallerOrEqualThan, greaterThan, between };
+			return window.innerWidth >= minSize && window.innerWidth < maxSize;
+		}
+	}
 }

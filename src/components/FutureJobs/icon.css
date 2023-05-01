@@ -1,0 +1,6 @@
+.icon-container {
+}
+
+.icon-container:hover > div > div > div {
+    font-size: 64px;
+}

@@ -56,7 +56,7 @@ export const FormItem = (props: any) => {
 };
 
 export default function SignIn(): ReactElement {
-	const style = useBreakpoints().smallerOrEqualThan("sm")
+	const style = useBreakpoints().smallerThan("md")
 		? styles.sm
 		: styles.default;
 
