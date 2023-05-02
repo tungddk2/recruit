@@ -101,7 +101,7 @@ export default function Footer(): ReactElement {
 		<div style={{ width: "100vw", backgroundColor: "rgba(0, 0, 0, 0.9)", height: "fit-content" }}>
 			<div style={_containerStyle}>
 				<div style={{ display: "flex", width: "100%", height: "100%", alignItems: "center", padding: "16px 0" }}>
-				<Row style={{ columnGap: "16px", width: "100%", height: "100%" }}>
+				<Row style={{ columnGap: "16px", width: "100%", height: "100%", alignItems: "center" }}>
 					<Col xs={11} sm={9} md={{ span: 6, offset: 1 }} style={{ display: "flex", flexDirection: "column", rowGap: "12px", }}>
 						<Typography.Title level={brandStyle} style={{ color: "#fff", margin: 0 }}>Recruit</Typography.Title>
 						<Typography.Text style={otherInfoStyle}>
@@ -147,7 +147,7 @@ export default function Footer(): ReactElement {
 			<Space direction="horizontal" style={{ width: "100%", justifyContent: "center", marginBottom: "8px" }}>
 				<CopyrightOutlined style={copyRightStyle}/>
 				<Typography style={copyRightStyle}>
-					{`${new Date().getFullYear()} Recruit. All Rights Reserved.`}
+					{`${new Date().getFullYear()} - Recruit.`}
 				</Typography>
 			</Space>
 		</div>

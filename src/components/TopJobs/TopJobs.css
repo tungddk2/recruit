@@ -1,0 +1,26 @@
+.ant-segmented-group {
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.ant-segmented-group > label.ant-segmented-item {
+    color: black;
+}
+
+.ant-segmented-group > label.ant-segmented-item.ant-segmented-item-selected {
+    color: #fff;
+    background-color: #005773;
+}
+
+div.ant-segmented-item-label {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    min-width: fit-content;
+}
+
+#mobile div.ant-segmented-item-label {
+    width: fit-content;
+}

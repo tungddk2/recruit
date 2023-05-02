@@ -4,7 +4,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
 import SignUp from "./components/SignUp/SignUp";
-import Footer from "./components/Footer/Footer";
+import TopJobs from "./components/TopJobs/TopJobs";
 
 const theme = {
 	token: {
@@ -22,7 +22,7 @@ function App() {
 		<ConfigProvider theme={theme}>
 			<Routes>
 				<Route path="/" element={
-					<Footer />
+					<TopJobs/>
 				}/>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />

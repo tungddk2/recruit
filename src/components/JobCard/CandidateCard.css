@@ -1,0 +1,35 @@
+#bookmark.ant-btn-primary {
+    background-color: #ff7875;
+    box-shadow: 0 2px 0 rgb(255 77 79 / 35%);
+}
+
+#bookmark.ant-btn-primary:hover {
+    background-color: #ff4d4f;
+    box-shadow: 0 2px 0 rgb(255 77 79 / 35%);
+}
+
+#bookmark.ant-btn-default:hover {
+    border-color: #ff4d4f;
+    color: #ff4d4f;
+}
+
+.candidate-card.ant-card-hoverable:hover {
+    border-color: #005773;
+}
+
+.info-container > div.ant-space-item:nth-child(1) {
+    width: 100%;
+}
+
+/* select the only second div child  of the #details-container parent */
+/* example:
+    #details-container
+        div
+        div <--- this one
+            div
+            div
+
+*/
+div#details-container.ant-space > div.ant-space-item:nth-child(2) {
+    width: 100%;
+}

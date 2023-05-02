@@ -1,7 +1,6 @@
 import React, {ReactElement} from "react";
 import {Button, Col, Form, Input, Row, Space, Typography} from "antd";
 import ImageContainer from "../common/images/ImageContainer";
-import {MailOutlined} from "@ant-design/icons";
 import {FormItem} from "../SignIn";
 import {useNavigate} from "react-router";
 import useBreakpoints from "../../hooks/useBreakpoints";
@@ -9,7 +8,6 @@ import {Link} from "react-router-dom";
 
 export interface SignUpProps {
 	role: "user" | "hr" | "company";
-
 }
 
 export default function SignUp(props: SignUpProps): ReactElement {

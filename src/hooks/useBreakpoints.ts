@@ -2,17 +2,21 @@ import { useEffect, useState } from "react";
 import { Breakpoint } from "antd";
 
 export const breakpoints: Record<string, number> = {
-	xs: 576,
-	sm: 768,
-	md: 992,
-	lg: 1200,
-	xl: 1600,
+	xs: 480,
+	sm: 576,
+	md: 768,
+	lg: 992,
+	xl: 1200,
+	xxl: 1600,
 }
 
 export type BreakpointChecker = {
 	smallerThan: (size: number | string) => boolean;
 	greaterOrEqualThan: (size: number | string) => boolean;
 	between: (min: number | string, max: number | string) => boolean;
+	isMobile: () => boolean;
+	isTablet: () => boolean;
+	isDesktop: () => boolean;
 }
 
 export default function useBreakpoints(): BreakpointChecker {
@@ -71,6 +75,9 @@ export default function useBreakpoints(): BreakpointChecker {
 				return false;
 
 			return window.innerWidth >= minSize && window.innerWidth < maxSize;
-		}
+		},
+		isMobile: () => window.innerWidth < breakpoints.sm,
+		isTablet: () => window.innerWidth >= breakpoints.sm && window.innerWidth < breakpoints.lg,
+		isDesktop: () => window.innerWidth >= breakpoints.lg,
 	}
 }
