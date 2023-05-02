@@ -18,7 +18,7 @@ export default function FutureJobIcon(props: FutureJobIconProps = {
 	numJob: "2950",
 }): ReactElement {
 	const checker = useBreakpoints();
-	const isDesktop = checker.greaterOrEqualThan("sm");
+	const isDesktop = checker.isDesktop();
 
 	const [iconSize, setIconSize] = useState<string>(isDesktop ? "50px" : "25px");
 

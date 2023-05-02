@@ -98,7 +98,7 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 					padding: isDesktop ? "1.5rem" : "1rem",
 					justifyContent: "space-between",
 				}} className="info-container">
-					<Space size={isDesktop ? 54 : 24 as SpaceSize} id="details-container" style={{ width: "100%" }}>
+					<Space size={isDesktop ? 54 : 24 as SpaceSize} className="details-container" style={{ width: "100%" }}>
 						<div style={{ width: isDesktop ? "170px" : "100px", height: isDesktop ? "130px" : "78px", }}>
 							<ImageContainer src={props.image} />
 						</div>
@@ -134,11 +134,11 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 
 					{
 						!isBookmarked ? (
-							<Button id="bookmark" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(true)}>
+							<Button className="bookmark" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(true)}>
 								{isDesktop ? "Lưu việc làm" : "Lưu"}
 							</Button>
 							) :
-							<Button id="bookmark" type="primary" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(false)}>
+							<Button className="bookmark" type="primary" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(false)}>
 								Đã lưu
 							</Button>
 					}
@@ -147,6 +147,7 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 					style={{
 						width: "100%",
 						height: "44px",
+						minHeight: "fit-content",
 						justifyContent: "space-between",
 						alignItems: "center",
 						backgroundColor: "#E6F5FA",

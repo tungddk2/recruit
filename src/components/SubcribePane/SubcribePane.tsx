@@ -108,7 +108,7 @@ export default function SubcribePane(): ReactElement {
 			</Col>
 			<Col xs={24} sm={12} style={{ display:"flex", justifyContent: "center", alignItems: "center", padding: "0 5px" }}>
 				<div style={{...emailContainerStyle, ...responsiveEmailContainerStyle}} >
-					<Space style={emailInputStyle}>
+					<Space style={emailInputStyle} className="email-register">
 						<Input placeholder="Nhập email của bạn tại đây" bordered={false} style={{ color: "#fff", height: "100%", minWidth: "233px" }} />
 						<Button type="primary" style={{ height: "100%", minHeight: "fit-content" }}>Đăng ký</Button>
 					</Space>

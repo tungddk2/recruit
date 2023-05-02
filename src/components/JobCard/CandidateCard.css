@@ -1,14 +1,14 @@
-#bookmark.ant-btn-primary {
+.bookmark.ant-btn-primary {
     background-color: #ff7875;
     box-shadow: 0 2px 0 rgb(255 77 79 / 35%);
 }
 
-#bookmark.ant-btn-primary:hover {
+.bookmark.ant-btn-primary:hover {
     background-color: #ff4d4f;
     box-shadow: 0 2px 0 rgb(255 77 79 / 35%);
 }
 
-#bookmark.ant-btn-default:hover {
+.bookmark.ant-btn-default:hover {
     border-color: #ff4d4f;
     color: #ff4d4f;
 }
@@ -30,6 +30,6 @@
             div
 
 */
-div#details-container.ant-space > div.ant-space-item:nth-child(2) {
+div.details-container.ant-space > div.ant-space-item:nth-child(2) {
     width: 100%;
 }

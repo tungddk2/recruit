@@ -98,7 +98,7 @@ export default function Footer(): ReactElement {
 
 
 	return (
-		<div style={{ width: "100vw", backgroundColor: "rgba(0, 0, 0, 0.9)", height: "fit-content" }}>
+		<div style={{ width: "100%", backgroundColor: "rgba(0, 0, 0, 0.9)", height: "fit-content" }}>
 			<div style={_containerStyle}>
 				<div style={{ display: "flex", width: "100%", height: "100%", alignItems: "center", padding: "16px 0" }}>
 				<Row style={{ columnGap: "16px", width: "100%", height: "100%", alignItems: "center" }}>
@@ -143,7 +143,7 @@ export default function Footer(): ReactElement {
 				</Row>
 				</div>
 			</div>
-			<Divider style={{ width: "100vw", borderColor: "rgba(137, 132, 132, 0.32)", margin: "8px 0" }}/>
+			<Divider style={{ width: "100%", borderColor: "rgba(137, 132, 132, 0.32)", margin: "8px 0" }}/>
 			<Space direction="horizontal" style={{ width: "100%", justifyContent: "center", marginBottom: "8px" }}>
 				<CopyrightOutlined style={copyRightStyle}/>
 				<Typography style={copyRightStyle}>

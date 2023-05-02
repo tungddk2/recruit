@@ -18,7 +18,7 @@ export default function SignUp(props: SignUpProps): ReactElement {
 		<div style={{
 			width: "100%",
 			height: "100vh",
-			display: checker.greaterOrEqualThan("sm") ? "flex": "block",
+			display: checker.greaterOrEqualThan("md") ? "flex": "block",
 			flexDirection: "column",
 			justifyContent: "center",
 		}}>
@@ -112,7 +112,8 @@ export default function SignUp(props: SignUpProps): ReactElement {
 						width: "100%",
 						height: "100%",
 						display: "flex",
-						justifyContent: "center",
+						justifyContent: "flex-start",
+						borderLeft: checker.greaterOrEqualThan("md") ? "3px solid #000" : "none",
 					}}>
 						<ImageContainer
 							src={

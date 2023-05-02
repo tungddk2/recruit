@@ -13,18 +13,29 @@ import {
 
 export default function FutureJobsList(): ReactElement {
 	const checker = useBreakpoints();
+	const isMobile = checker.isMobile();
+	const isTablet = checker.isTablet();
+	const isDesktop = checker.isDesktop();
 
-	const gapSize = checker.greaterOrEqualThan("md")
-		? "56px" : checker.greaterOrEqualThan("sm")
-			? "25px" : "16px";
-
-	const paddingSize = checker.greaterOrEqualThan("md")
-		? "50px 120px" : checker.greaterOrEqualThan("sm")
-			? "16px 32px" : "16px";
-
-	const listGapSize = checker.greaterOrEqualThan("md")
-		? "80px" : checker.greaterOrEqualThan("sm")
-			? "40px" : "16px";
+	const gapSize = isDesktop ? "56px" : isTablet ? "25px" : "16px";
+	const paddingSize = isDesktop ? "50px 120px" : isTablet ? "16px 32px" : "16px";
+	const listGapSize = isDesktop ? "80px" : isTablet ? "40px" : "16px";
+	const buttonStyle = isDesktop ? {
+		width: "200px",
+		height: "60px",
+		fontWeight: "500",
+		fontSize: "20px",
+	} : isTablet ? {
+		width: "150px",
+		height: "45px",
+		fontWeight: "500",
+		fontSize: "16px",
+	} : {
+		width: "110px",
+		height: "36px",
+		fontWeight: "500",
+		fontSize: "14px",
+	}
 
 	return (
 		<div style={{
@@ -55,12 +66,7 @@ export default function FutureJobsList(): ReactElement {
 			<div style={{ width: "100%", height: "fit-content", display: "flex", justifyContent: "center" }}>
 				<Button
 					type="primary" size="large"
-					style={{
-						width: "200px",
-						height: "60px",
-						fontWeight: "500",
-						fontSize: "20px",
-					}}
+					style={buttonStyle}
 				>Xem tất cả</Button>
 			</div>
 		</div>

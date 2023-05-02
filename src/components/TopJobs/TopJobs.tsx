@@ -69,6 +69,7 @@ export default function TopJobs(): ReactElement {
 							width: isDesktop ? "686px": isTablet ? "450px" : "310px",
 							padding: segmentedPadding,
 						}}
+						className={"top-job-selector"}
 						id={isMobile ? "mobile" : "not-mobile"}
 					/>
 				</div>
