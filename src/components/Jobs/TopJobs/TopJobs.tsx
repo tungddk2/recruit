@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import useBreakpoints from "../../hooks/useBreakpoints";
+import useBreakpoints from "../../../hooks/useBreakpoints";
 import {Button, Segmented, Space, Typography} from "antd";
 import {SpaceSize} from "antd/es/space";
 import "./TopJobs.css";
@@ -77,8 +77,8 @@ export default function TopJobs(): ReactElement {
 				{
 					jobsList.map((job, index) => {
 						return (
-							<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-								<JobCard role="user" info={job} key={index}/>
+							<div style={{ width: "100%", display: "flex", justifyContent: "center" }} key={index}>
+								<JobCard role="user" info={job}/>
 							</div>
 						);
 					})
@@ -103,7 +103,7 @@ const jobsList: CandidateProps[] = [
 		requiredExperience: "1 năm",
 		postedDate: new Date("2022-01-01"),
 		isBookmarked: false,
-		image: require("../../assets/company-logos/1.png"),
+		image: require("../../../assets/company-logos/1.png"),
 	},
 	{
 		type: "part-time",
@@ -114,7 +114,7 @@ const jobsList: CandidateProps[] = [
 		requiredExperience: [3, 5],
 		postedDate: new Date("2023-01-01"),
 		isBookmarked: true,
-		image: require("../../assets/company-logos/2.png"),
+		image: require("../../../assets/company-logos/2.png"),
 	},
 	{
 		type: "internship",
@@ -125,7 +125,7 @@ const jobsList: CandidateProps[] = [
 		requiredExperience: "Không",
 		postedDate: new Date("2023-02-20"),
 		isBookmarked: false,
-		image: require("../../assets/company-logos/3.png"),
+		image: require("../../../assets/company-logos/3.png"),
 	},
 	{
 		type: "freelance",
@@ -136,6 +136,6 @@ const jobsList: CandidateProps[] = [
 		requiredExperience: "Không",
 		postedDate: new Date("2023-03-20"),
 		isBookmarked: false,
-		image: require("../../assets/company-logos/4.png"),
+		image: require("../../../assets/company-logos/4.png"),
 	}
 ];

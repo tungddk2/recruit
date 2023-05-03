@@ -6,6 +6,8 @@ import { ConfigProvider } from "antd";
 import SignUp from "./components/SignUp/SignUp";
 import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import UserPage from "./pages/UserPage";
+import SearchJob from "./components/Search/SearchJob/SearchJob";
 
 const theme = {
 	token: {
@@ -22,7 +24,10 @@ function App() {
 	return (
 		<ConfigProvider theme={theme}>
 			<Routes>
-				<Route path="/" element={<LandingPage />}/>
+				<Route path="/*" element={<UserPage />}>
+					<Route index element={<LandingPage/>} />
+					<Route path="jobs" element={<SearchJob />} />
+				</Route>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />
 					<Route path="company" element={<SignUp role="company" />} />

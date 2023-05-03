@@ -1,3 +1,10 @@
 #user > div.ant-space-item {
     display: flex;
 }
+
+ul.recruit-tab-pane.ant-menu > li.ant-menu-item {
+    width: 100px;
+    min-width: fit-content;
+    display: inline-flex;
+    justify-content: center;
+}

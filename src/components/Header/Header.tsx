@@ -1,5 +1,5 @@
 import {ReactElement, useState} from "react";
-import {Avatar, Badge, Button, Divider, Dropdown, Layout, MenuProps, Space, Typography} from "antd";
+import {Avatar, Badge, Button, Divider, Dropdown, Layout, Menu, MenuProps, Space, Tabs, Typography} from "antd";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import {LogoIcon} from "../common/icons/LogoIcon";
 import ButtonGroup from "antd/es/button/button-group";
@@ -8,11 +8,33 @@ import {Role} from "../../constants/roles";
 import Notification from "./Notification/Notification";
 import "./Header.css";
 import {useNavigate} from "react-router";
+import {Link} from "react-router-dom";
 
 export type HeaderProps = {
 	role?: Role;
 	isLoggedIn?: boolean;
 }
+
+const tabs: MenuProps["items"] = [
+	{
+		label: (
+			<Link to="/jobs">Việc làm</Link>
+		),
+		key: "job",
+	},
+	{
+		label: (
+			<Link to="/companys">Công ty</Link>
+		),
+		key: "company",
+	},
+	{
+		label: (
+			<Link to="/profile">Hồ sơ</Link>
+		),
+		key: "profile",
+	}
+];
 
 export default function Header(props: HeaderProps = {
 	role: "guest",
@@ -25,6 +47,7 @@ export default function Header(props: HeaderProps = {
 	const isDesktop = checker.isDesktop();
 
 	const [showNotification, setShowNotification] = useState(false);
+	const [currentTab, setCurrentTab] = useState("1");
 
 	return (
 		<Layout.Header
@@ -42,11 +65,26 @@ export default function Header(props: HeaderProps = {
 				zIndex: 1,
 			}}
 		>
-			<div style={{ width: "fit-content", height: "100%", display: "flex", alignItems: "center" }}>
+			<div
+				style={{ width: "fit-content", height: "100%", display: "flex", alignItems: "center" }}
+				onClick={() => navigate("/")}
+			>
 				<LogoIcon />
 			</div>
 
-
+			{ isDesktop &&
+				<Menu
+					onClick={(e) => setCurrentTab(e.key)}
+					selectedKeys={[currentTab]}
+					items={tabs} mode="horizontal"
+					style={{
+						gap: "16px",
+						fontSize: "1rem",
+						fontWeight: 500,
+					}}
+					className="recruit-tab-pane"
+				/>
+			}
 			{ props.isLoggedIn ? (
 					<Space id="user">
 						<Badge count={5} overflowCount={10} offset={[-10, 10]}>

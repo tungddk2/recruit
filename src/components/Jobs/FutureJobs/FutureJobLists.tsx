@@ -1,6 +1,6 @@
 import {ReactElement} from "react";
 import {Button, Col, Row, Typography} from "antd";
-import useBreakpoints from "../../hooks/useBreakpoints";
+import useBreakpoints from "../../../hooks/useBreakpoints";
 import FutureJobIcon, {FutureJobIconProps} from "./FutureJobIcon";
 import {
 	BankOutlined,

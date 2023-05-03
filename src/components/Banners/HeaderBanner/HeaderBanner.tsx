@@ -1,7 +1,7 @@
 import React, {ReactElement} from "react";
 import {Button, Col, Row, Typography} from "antd";
-import ImageContainer from "../common/images/ImageContainer";
-import useBreakpoints from "../../hooks/useBreakpoints";
+import ImageContainer from "../../common/images/ImageContainer";
+import useBreakpoints from "../../../hooks/useBreakpoints";
 
 const containerStyle = {
 	xs: {
@@ -73,7 +73,7 @@ export default function HeaderBanner(): ReactElement {
 					justifyContent: "center",
 				}}>
 					<ImageContainer
-						src={require("../../assets/find-job-banner.png")}
+						src={require("../../../assets/find-job-banner.png")}
 						style={{
 							width: "100%", height: "auto",
 							maxWidth: "100%",

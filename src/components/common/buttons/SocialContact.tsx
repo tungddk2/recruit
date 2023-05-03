@@ -13,10 +13,10 @@ export default function SocialContact(props: SocialContactProps) {
 
 	return (
 		<Space>
-			<Button size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<InstagramOutlined/>} />
-			<Button size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<LinkedinOutlined/>} />
-			<Button size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<FacebookOutlined/>} />
-			<Button size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<TwitterOutlined/>} />
+			<Button className="social-contact" size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<InstagramOutlined/>} />
+			<Button className="social-contact" size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<LinkedinOutlined/>} />
+			<Button className="social-contact" size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<FacebookOutlined/>} />
+			<Button className="social-contact" size={isMobile ? "small" : "medium" as SizeType} shape="circle" icon={<TwitterOutlined/>} />
 		</Space>
 	);
 }

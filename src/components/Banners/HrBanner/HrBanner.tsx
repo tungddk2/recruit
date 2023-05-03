@@ -1,7 +1,7 @@
 import React, {ReactElement} from "react";
 import {Button, Col, Row, Typography} from "antd";
-import useBreakpoints from "../../hooks/useBreakpoints";
-import ImageContainer from "../common/images/ImageContainer";
+import useBreakpoints from "../../../hooks/useBreakpoints";
+import ImageContainer from "../../common/images/ImageContainer";
 
 const containerStyle = {
 	xs: {
@@ -101,7 +101,7 @@ export default function HrBanner(): ReactElement {
 					justifyContent: "center",
 				}}>
 					<ImageContainer
-						src={require("../../assets/hr-banner.png")}
+						src={require("../../../assets/hr-banner.png")}
 						style={{
 							width: "100%", height: "auto",
 							maxWidth: "100%",

@@ -1,0 +1,19 @@
+.recruit-space-search-container {
+  div.ant-space-item {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.recruit-select-advanced {
+  div.ant-select-selector {
+    background-color: transparent !important;
+    border: none !important;
+  }
+}
+
+.recruit-select-advanced {
+  input.ant-select-selection-search-input::placeholder {
+    color: rgba(0, 0, 0, 1);
+  }
+}

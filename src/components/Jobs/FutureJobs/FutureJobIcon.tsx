@@ -2,7 +2,7 @@ import {ReactElement, useEffect, useState} from "react";
 import {Card, Tooltip} from "antd";
 import Icon, {LaptopOutlined} from "@ant-design/icons";
 import "./icon.css";
-import useBreakpoints from "../../hooks/useBreakpoints";
+import useBreakpoints from "../../../hooks/useBreakpoints";
 
 const { Meta } = Card;
 

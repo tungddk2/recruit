@@ -1,12 +1,12 @@
 import {CandidateProps} from "./JobCard";
 import {ReactElement, useState} from "react";
-import useBreakpoints from "../../hooks/useBreakpoints";
+import useBreakpoints from "../../../hooks/useBreakpoints";
 import {Button, Card, Col, Row, Space, Typography} from "antd";
-import ImageContainer from "../common/images/ImageContainer";
+import ImageContainer from "../../common/images/ImageContainer";
 import {HeartOutlined} from "@ant-design/icons";
 import "./CandidateCard.css"
-import {LocationOnIcon} from "../common/icons/LocationOnIcon";
-import {PaymentsIcon} from "../common/icons/PaymentsIcon";
+import {LocationOnIcon} from "../../common/icons/LocationOnIcon";
+import {PaymentsIcon} from "../../common/icons/PaymentsIcon";
 import {SpaceSize} from "antd/es/space";
 
 export default function CandidateCard(props: CandidateProps): ReactElement {

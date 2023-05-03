@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
-import {Role} from "../../constants/roles";
+import {Role} from "../../../constants/roles";
 import CandidateCard from "./CandidateCard";
 
 export type JobType = "full-time" | "part-time" | "internship" | "freelance";
