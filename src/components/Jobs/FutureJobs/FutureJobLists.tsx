@@ -10,8 +10,10 @@ import {
 	LineChartOutlined,
 	NotificationOutlined
 } from "@ant-design/icons";
+import {useNavigate} from "react-router";
 
 export default function FutureJobsList(): ReactElement {
+	const navigate = useNavigate();
 	const checker = useBreakpoints();
 	const isMobile = checker.isMobile();
 	const isTablet = checker.isTablet();
@@ -67,6 +69,7 @@ export default function FutureJobsList(): ReactElement {
 				<Button
 					type="primary" size="large"
 					style={buttonStyle}
+					onClick={() => navigate("/job/all")}
 				>Xem tất cả</Button>
 			</div>
 		</div>

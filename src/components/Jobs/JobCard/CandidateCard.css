@@ -14,7 +14,7 @@
 }
 
 .candidate-card.ant-card-hoverable:hover {
-    border-color: #005773;
+    border-color: #005773!important;
 }
 
 .info-container > div.ant-space-item:nth-child(1) {

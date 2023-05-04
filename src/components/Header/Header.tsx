@@ -18,13 +18,13 @@ export type HeaderProps = {
 const tabs: MenuProps["items"] = [
 	{
 		label: (
-			<Link to="/jobs">Việc làm</Link>
+			<Link to="/job">Việc làm</Link>
 		),
 		key: "job",
 	},
 	{
 		label: (
-			<Link to="/companys">Công ty</Link>
+			<Link to="/company">Công ty</Link>
 		),
 		key: "company",
 	},

@@ -93,8 +93,9 @@ export default function TopJobs(): ReactElement {
 	);
 }
 
-const jobsList: CandidateProps[] = [
+export const jobsList: CandidateProps[] = [
 	{
+		id: 1,
 		type: "full-time",
 		title: "Nhân viên kinh doanh",
 		company: "Công ty TNHH Thương mại và Dịch vụ Tổng hợp Hà Nội",
@@ -106,6 +107,7 @@ const jobsList: CandidateProps[] = [
 		image: require("../../../assets/company-logos/1.png"),
 	},
 	{
+		id: 2,
 		type: "part-time",
 		title: "Frontend Developer",
 		company: "Google",
@@ -117,6 +119,7 @@ const jobsList: CandidateProps[] = [
 		image: require("../../../assets/company-logos/2.png"),
 	},
 	{
+		id: 3,
 		type: "internship",
 		title: "Nhân viên Marketing",
 		company: "Nike Việt Nam",
@@ -128,6 +131,7 @@ const jobsList: CandidateProps[] = [
 		image: require("../../../assets/company-logos/3.png"),
 	},
 	{
+		id: 4,
 		type: "freelance",
 		title: "Giám đốc kinh doanh",
 		company: "BestBuy",

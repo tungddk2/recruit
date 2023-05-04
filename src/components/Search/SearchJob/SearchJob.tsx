@@ -1,4 +1,4 @@
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import {Button, Col, Divider, Row, Select, Space, Tooltip, Typography} from "antd";
 import useBreakpoints from "../../../hooks/useBreakpoints";
 import Search from "antd/es/input/Search";
@@ -13,6 +13,11 @@ export default function SearchJob(): ReactElement {
 	const isDesktop = checker.isDesktop();
 
 	const buttonSize: SizeType = (isDesktop ? "middle" : "small") as SizeType;
+
+	const [selectedJobType, setSelectedJobType] = useState<string | undefined>(undefined);
+	const [selectedJobLocation, setSelectedJobLocation] = useState<string | undefined>(undefined);
+	const [selectedJobSalary, setSelectedJobSalary] = useState<string | undefined>(undefined);
+	const [selectedCompany, setSelectedCompany] = useState<string | undefined>(undefined);
 
 	return (
 		<Space
@@ -48,7 +53,7 @@ export default function SearchJob(): ReactElement {
 				<Col span={5} style={{ borderRight: "1px solid #898484", padding: "8px 0", }} >
 					<Select
 						size={buttonSize}
-						className={"recruit-select-advanced"}
+						bordered={false}
 						allowClear={true}
 						style={{ width: "100%" }}
 						showSearch={true}
@@ -65,12 +70,14 @@ export default function SearchJob(): ReactElement {
 							</>
 						)}
 						options={jobCategories.map((category) => ({ label: category, value: category }))}
+						value={selectedJobType}
+						onChange={(value) => setSelectedJobType(value)}
 					/>
 				</Col>
 				<Col span={5} style={{ borderRight: "1px solid #898484", padding: "8px 0", }} >
 					<Select
 						size={buttonSize}
-						className={"recruit-select-advanced"}
+						bordered={false}
 						allowClear={true}
 						style={{ width: "100%" }}
 						showSearch={true}
@@ -87,12 +94,14 @@ export default function SearchJob(): ReactElement {
 							</>
 						)}
 						options={companies.map((company) => ({ label: company, value: company }))}
+						value={selectedCompany}
+						onChange={(value) => setSelectedCompany(value)}
 					/>
 				</Col>
 				<Col span={5} style={{ borderRight: "1px solid #898484", padding: "8px 0", }}>
 					<Select
 						size={buttonSize}
-						className={"recruit-select-advanced"}
+						bordered={false}
 						allowClear={true}
 						style={{ width: "100%" }}
 						showSearch={true}
@@ -109,14 +118,16 @@ export default function SearchJob(): ReactElement {
 							</>
 						)}
 						options={locations.map((location) => ({ label: location, value: location }))}
+						value={selectedJobLocation}
+						onChange={(value) => setSelectedJobLocation(value)}
 					/>
 				</Col>
 				<Col span={5} style={{ padding: "8px 0", }} >
 					<Select
+						bordered={false}
 						size={buttonSize}
-						className={"recruit-select-advanced"}
 						allowClear={true}
-						style={{ width: "100%" }}
+						style={{ width: "100%", minWidth: "fit-content" }}
 						showSearch={true}
 						placeholder={ isDesktop ? "Mức lương mong muốn" : "Mức lương"}
 						optionFilterProp={"children"}
@@ -131,11 +142,21 @@ export default function SearchJob(): ReactElement {
 							</>
 						)}
 						options={salaries.map((salary) => ({ label: salary, value: salary }))}
+						value={selectedJobSalary}
+						onChange={(value) => setSelectedJobSalary(value)}
 					/>
 				</Col>
 				<Col span={1} style={{ padding: "8px 0", }} >
 					<Tooltip title="Xoá các bộ lọc">
-						<Button size={buttonSize} shape="circle" icon={<CloseOutlined />} />
+						<Button size={buttonSize} shape="circle" icon={<CloseOutlined />}
+							onClick={() => {
+								// reset all select filters
+								setSelectedJobType(undefined);
+								setSelectedJobLocation(undefined);
+								setSelectedJobSalary(undefined);
+								setSelectedCompany(undefined);
+							}}
+						/>
 					</Tooltip>
 				</Col>
 			</Row>

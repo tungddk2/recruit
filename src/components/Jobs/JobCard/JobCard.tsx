@@ -5,6 +5,7 @@ import CandidateCard from "./CandidateCard";
 export type JobType = "full-time" | "part-time" | "internship" | "freelance";
 
 export type CandidateProps = {
+	id: string | number;
 	type: JobType;
 	title: string;
 	company: string;
@@ -17,6 +18,7 @@ export type CandidateProps = {
 }
 
 export type HrProps = {
+	id: string | number;
 	type: JobType;
 	title: string;
 	location: string;

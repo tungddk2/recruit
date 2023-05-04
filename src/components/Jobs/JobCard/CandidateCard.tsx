@@ -8,8 +8,10 @@ import "./CandidateCard.css"
 import {LocationOnIcon} from "../../common/icons/LocationOnIcon";
 import {PaymentsIcon} from "../../common/icons/PaymentsIcon";
 import {SpaceSize} from "antd/es/space";
+import {useNavigate} from "react-router";
 
 export default function CandidateCard(props: CandidateProps): ReactElement {
+	const navigate = useNavigate();
 	const checker = useBreakpoints();
 	const isMobile = checker.isMobile();
 	const isDesktop = checker.isDesktop();
@@ -28,6 +30,7 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 			<Card
 				style={{
 					borderRadius: "8px",
+					border: "1px solid rgba(0, 0, 0, 0.25)",
 					padding: 0,
 					minWidth: "300px",
 					width: "300px",
@@ -35,6 +38,10 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 				bodyStyle={{ padding: 0 }}
 				className="candidate-card"
 				hoverable={true}
+				onClick={(e) => {
+					navigate(`/job/${props.id}`);
+					e.preventDefault();
+				}}
 			>
 				<Space style={{ justifyContent: "space-between", width: "100%", padding: "8px" }}>
 					<Space>
@@ -44,9 +51,15 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 
 					{
 						!isBookmarked ?
-							<Button id="bookmark" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(true)} />
+							<Button id="bookmark" icon={<HeartOutlined/>} onClick={(e) => {
+								setIsBookmarked(true)
+								e.stopPropagation();
+							}} />
 							:
-							<Button id="bookmark" type="primary" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(false)} />
+							<Button id="bookmark" type="primary" icon={<HeartOutlined/>} onClick={(e) => {
+								setIsBookmarked(true)
+								e.stopPropagation();
+							}} />
 					}
 				</Space>
 
@@ -86,10 +99,14 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 			</Card>
 		) : (
 			<Card
-				style={{ display: "flex", flexDirection: "column", borderRadius: "8px", padding: 0 }}
+				style={{ display: "flex", flexDirection: "column", borderRadius: "8px", padding: 0, border: "1px solid rgba(0, 0, 0, 0.25)", }}
 				bodyStyle={{ padding: 0 }}
 				className="candidate-card"
 				hoverable={true}
+				onClick={(e) => {
+					navigate(`/job/${props.id}`);
+					e.preventDefault();
+				}}
 			>
 				<Space style={{
 					width: "100%",
@@ -134,11 +151,26 @@ export default function CandidateCard(props: CandidateProps): ReactElement {
 
 					{
 						!isBookmarked ? (
-							<Button className="bookmark" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(true)}>
+							<Button
+								className="bookmark"
+								icon={<HeartOutlined/>}
+								onClick={(e) => {
+									setIsBookmarked(true)
+									e.stopPropagation();
+								}}
+							>
 								{isDesktop ? "Lưu việc làm" : "Lưu"}
 							</Button>
 							) :
-							<Button className="bookmark" type="primary" icon={<HeartOutlined/>} onClick={() => setIsBookmarked(false)}>
+							<Button
+								className="bookmark"
+								type="primary"
+								icon={<HeartOutlined/>}
+								onClick={(e) => {
+									setIsBookmarked(false)
+									e.stopPropagation();
+								}}
+							>
 								Đã lưu
 							</Button>
 					}

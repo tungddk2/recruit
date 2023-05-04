@@ -8,6 +8,8 @@ import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UserPage from "./pages/UserPage";
 import SearchJob from "./components/Search/SearchJob/SearchJob";
+import {JobSearch, AllJobFields} from "./pages/UserJobsPage";
+import MainJobPage from "./pages/UserJobsPage/MainJobPage";
 
 const theme = {
 	token: {
@@ -26,7 +28,11 @@ function App() {
 			<Routes>
 				<Route path="/*" element={<UserPage />}>
 					<Route index element={<LandingPage/>} />
-					<Route path="jobs" element={<SearchJob />} />
+					<Route path="job/*" element={<MainJobPage />}>
+						<Route index element={<JobSearch />} />
+						<Route path="all" element={<AllJobFields />} />
+						<Route path=":id" element={<div>Job detail</div>} />
+					</Route>
 				</Route>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />
