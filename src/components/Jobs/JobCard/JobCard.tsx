@@ -10,7 +10,7 @@ export type CandidateProps = {
 	title: string;
 	company: string;
 	location: string;
-	salary: [string | number, string | number];
+	salary: [string | number, string | number] | string;
 	requiredExperience: string | [number, number];
 	postedDate: Date;
 	isBookmarked: boolean;

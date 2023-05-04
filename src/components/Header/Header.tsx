@@ -72,17 +72,18 @@ export default function Header(props: HeaderProps = {
 				<LogoIcon />
 			</div>
 
-			{ isDesktop &&
+			{ !isMobile &&
 				<Menu
 					onClick={(e) => setCurrentTab(e.key)}
 					selectedKeys={[currentTab]}
-					items={tabs} mode="horizontal"
+					items={tabs}
+					mode="horizontal"
 					style={{
 						gap: "16px",
 						fontSize: "1rem",
 						fontWeight: 500,
 					}}
-					className="recruit-tab-pane"
+					className={isDesktop ? "recruit-tab-pane-desktop recruit-tab-pane" : "recruit-tab-pane-normal"}
 				/>
 			}
 			{ props.isLoggedIn ? (

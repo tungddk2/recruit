@@ -10,6 +10,13 @@ import UserPage from "./pages/UserPage";
 import SearchJob from "./components/Search/SearchJob/SearchJob";
 import {JobSearch, AllJobFields} from "./pages/UserJobsPage";
 import MainJobPage from "./pages/UserJobsPage/MainJobPage";
+import JobOverview from "./components/Overview/JobOverview";
+import HrOverview from "./components/Overview/HrOverview";
+import JobDetail from "./components/Jobs/JobDetail/JobDetail";
+import MainCompanyPage from "./pages/UserCompaniesPage/MainCompanyPage";
+import {CompanySearch} from "./pages/UserCompaniesPage";
+import CompanyDetail from "./components/Company/CompanyDetail/CompanyDetail";
+import Profile from "./pages/Profile/Profile";
 
 const theme = {
 	token: {
@@ -31,8 +38,14 @@ function App() {
 					<Route path="job/*" element={<MainJobPage />}>
 						<Route index element={<JobSearch />} />
 						<Route path="all" element={<AllJobFields />} />
-						<Route path=":id" element={<div>Job detail</div>} />
+						<Route path=":id" element={<JobDetail />} />
 					</Route>
+					<Route path="company/*" element={<MainCompanyPage />}>
+						<Route index element={<CompanySearch />} />
+						<Route path=":id" element={<CompanyDetail />} />
+					</Route>
+				</Route>
+				<Route path="profile" element={<Profile />}>
 				</Route>
 				<Route path="/sign-up">
 					<Route path="user" element={<SignUp role="user" />} />

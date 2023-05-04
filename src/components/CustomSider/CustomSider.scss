@@ -1,0 +1,18 @@
+ul.recruit-slider-menu {
+  li.ant-menu-item-selected {
+    background-color: #005773;
+    color: #fff;
+  }
+}
+
+.recruit-slider-close {
+  left: -210px!important;
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+}
+
+.recruit-slider-open {
+  left: 0;
+  transition-timing-function: ease-in;
+  transition-duration: 0.2s;
+}

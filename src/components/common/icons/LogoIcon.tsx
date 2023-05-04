@@ -59,6 +59,6 @@ const LogoShortSVG = () => (
 );
 
 export const LogoIcon = (props: Partial<CustomIconComponentProps>) => {
-	const isMobile = useBreakpoints().isMobile();
-	return <Icon component={isMobile ? LogoShortSVG : LogoSVG} {...props} />
+	const isDesktop = useBreakpoints().isDesktop();
+	return <Icon component={isDesktop ? LogoSVG : LogoShortSVG} {...props} />
 }

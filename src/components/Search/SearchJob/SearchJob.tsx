@@ -187,7 +187,7 @@ const companies = [
 	"Công ty May 10",
 ];
 
-const locations = [
+export const locations = [
 	"Tất cả",
 	"Hà Nội",
 	"Hồ Chí Minh",

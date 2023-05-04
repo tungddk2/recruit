@@ -1,5 +1,5 @@
 import {SpaceSize} from "antd/es/space";
-import {Button, Pagination, Segmented, Space, Typography} from "antd";
+import { Pagination, Space, Typography} from "antd";
 import JobCard, {CandidateProps} from "../JobCard/JobCard";
 import useBreakpoints from "../../../hooks/useBreakpoints";
 import {jobsList} from "../TopJobs";
