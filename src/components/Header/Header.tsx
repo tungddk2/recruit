@@ -1,4 +1,4 @@
-import {ReactElement, useState} from "react";
+import {ReactElement, useContext, useState} from "react";
 import {Avatar, Badge, Button, Divider, Dropdown, Layout, Menu, MenuProps, Space, Tabs, Typography} from "antd";
 import useBreakpoints from "../../hooks/useBreakpoints";
 import {LogoIcon} from "../common/icons/LogoIcon";
@@ -9,6 +9,7 @@ import Notification from "./Notification/Notification";
 import "./Header.css";
 import {useNavigate} from "react-router";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../provider/AuthContext";
 
 export type HeaderProps = {
 	role?: Role;
@@ -49,6 +50,8 @@ export default function Header(props: HeaderProps = {
 	const [showNotification, setShowNotification] = useState(false);
 	const [currentTab, setCurrentTab] = useState("1");
 
+	const { openLoginModal, logout, user } = useContext(AuthContext);
+
 	return (
 		<Layout.Header
 			style={{
@@ -62,7 +65,7 @@ export default function Header(props: HeaderProps = {
 				display: "flex",
 				justifyContent: "space-between",
 				alignItems: "center",
-				zIndex: 1,
+				zIndex: 2,
 			}}
 		>
 			<div
@@ -72,7 +75,7 @@ export default function Header(props: HeaderProps = {
 				<LogoIcon />
 			</div>
 
-			{ !isMobile &&
+			{ !isMobile && (user.role ==="user" || user.role === "guest" ) &&
 				<Menu
 					onClick={(e) => setCurrentTab(e.key)}
 					selectedKeys={[currentTab]}
@@ -86,7 +89,7 @@ export default function Header(props: HeaderProps = {
 					className={isDesktop ? "recruit-tab-pane-desktop recruit-tab-pane" : "recruit-tab-pane-normal"}
 				/>
 			}
-			{ props.isLoggedIn ? (
+			{ user.role !== "guest" ? (
 					<Space id="user">
 						<Badge count={5} overflowCount={10} offset={[-10, 10]}>
 							<Button
@@ -112,7 +115,7 @@ export default function Header(props: HeaderProps = {
 					</Space>
 				) : (
 					<Space>
-						<Button icon={<ImportOutlined/>} type="primary">Đăng nhập</Button>
+						<Button icon={<ImportOutlined/>} type="primary" onClick={() => openLoginModal(true)}>Đăng nhập</Button>
 						{ !isMobile && <Button icon={<EditOutlined/>} type="default" onClick={() => navigate("/sign-up/user")}>Đăng ký</Button> }
 					</Space>
 				)

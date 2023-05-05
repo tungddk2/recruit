@@ -29,6 +29,7 @@ export default function Notification({ show = false }): ReactElement {
 				position: "absolute",
 				overflow: "auto",
 				border: "1px solid #005773",
+				backgroundColor: "#fff",
 				padding: "16px", ...style
 			}}
 			size={16}

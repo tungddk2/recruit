@@ -1,11 +1,30 @@
-import {ReactElement, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {Button, Layout, Menu} from "antd";
 import type { MenuProps } from "antd";
 import "./CustomSider.scss";
 import {LeftOutlined, RightOutlined} from "@ant-design/icons";
 import useBreakpoints from "../../hooks/useBreakpoints";
+import {useNavigate} from "react-router";
 
-export type MenuItem = Required<MenuProps>["items"][number] & { path: string };
+//export type MenuItem = Required<MenuProps>["items"][number] & { path: string };
+
+export type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem(
+	label: React.ReactNode,
+	key: React.Key,
+	icon?: React.ReactNode,
+	children?: MenuItem[],
+	type?: 'group',
+): MenuItem {
+	return {
+		key,
+		icon,
+		children,
+		label,
+		type,
+	} as MenuItem;
+}
 
 export type CustomSiderProps = {
 	menuItems: MenuItem[];
@@ -17,6 +36,11 @@ export default function CustomSider(props: CustomSiderProps): ReactElement {
 	const isTablet = checker.isTablet();
 	const [collapsed, setCollapsed] = useState(!isDesktop);
 
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (isDesktop) setCollapsed(false);
+	}, [isDesktop]);
 
 	return (
 		<Layout.Sider
@@ -28,6 +52,7 @@ export default function CustomSider(props: CustomSiderProps): ReactElement {
 				bottom: 0,
 				height: "calc(100vh - 64px)",
 				boxShadow: "0px 2px 8px 0px rgba(0, 0, 0, 0.15)",
+				zIndex: 1,
 			}}
 			trigger={null}
 			//collapsible
@@ -35,11 +60,14 @@ export default function CustomSider(props: CustomSiderProps): ReactElement {
 			className={collapsed ? "recruit-slider-close" : "recruit-slider-open"}
 		>
 			<Menu
-				defaultSelectedKeys={["1"]}
+				defaultSelectedKeys={["cv"]}
 				mode="inline"
 				items={props.menuItems}
 				style={{ height: "100%", backgroundColor: "#fff" }}
 				className={"recruit-slider-menu"}
+				onClick={(e) => {
+					navigate(e.key.toString());
+				}}
 			/>
 
 			{ !isDesktop &&

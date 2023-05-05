@@ -164,7 +164,7 @@ export default function SearchJob(): ReactElement {
 	);
 };
 
-const jobCategories = [
+export const jobCategories = [
 	"Tất cả",
 	"Kế toán",
 	"Nhân viên kinh doanh",
@@ -176,7 +176,7 @@ const jobCategories = [
 	"Giám đốc kinh doanh",
 ];
 
-const companies = [
+export const companies = [
 	"Tất cả",
 	"VNG",
 	"VCCorp",
@@ -197,7 +197,7 @@ export const locations = [
 	"Vũng Tàu",
 ]
 
-const salaries = [
+export const salaries = [
 	"Tất cả",
 	"Thỏa thuận",
 	"Dưới 1 triệu",

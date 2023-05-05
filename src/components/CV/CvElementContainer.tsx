@@ -5,19 +5,19 @@ import {EditOutlined, SaveOutlined} from "@ant-design/icons";
 import {SizeType} from "antd/es/config-provider/SizeContext";
 
 export type ElementProps = {
-	title: ReactElement;
+	title: ReactElement | string;
 	editable: boolean;
-	isEditing: boolean;
-	children: ReactElement;
+	isEditing?: boolean;
+	children?: ReactElement | undefined;
 	setOnEdit: (edit: boolean) => void;
 }
 
-export function CvElementContainer(props: ElementProps = {
+export function CvElementContainer(props: ElementProps & any = {
 	title: <></>,
 	editable: false,
 	isEditing: false,
 	children: <></>,
-	setOnEdit: () => {},
+	setOnEdit: (edit: boolean) => {},
 }): ReactElement {
 	const checker = useBreakpoints();
 	const isDesktop = checker.isDesktop();
@@ -27,6 +27,7 @@ export function CvElementContainer(props: ElementProps = {
 	const titleStyle = {
 		fontSize: isDesktop ? "24px" : isTablet ? "20px" : "16px",
 		fontWeight: "500",
+		color: "#005773",
 	}
 
 	return (
@@ -34,17 +35,18 @@ export function CvElementContainer(props: ElementProps = {
 			width: "100%",
 			boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
 			borderRadius: "8px",
-			padding: isDesktop ? "40px" : isTablet ? "32px" : "24px",
+			padding: isDesktop ? "40px" : isTablet ? "24px" : "16px",
 			rowGap: "20px",
-		}} >
+		}}>
 			<Col span={24}>
-				<Row style={{ justifyContent: "space-between" }}>
-					<Col span={20} style={titleStyle}>{props.title}</Col>
-					{props.editable &&
-						<Col span={3}>
+				<Row style={{ justifyContent: "space-between", paddingBottom: "20px" }}>
+					<Col span={18} style={titleStyle}>{props.title}</Col>
+					{props.editable && !props.isEditing &&
+						<Col style={{ width: "fit-content" }}>
 							<Button
+								type="primary"
 								size={isDesktop ? "large" : "medium" as SizeType}
-								onClick={() => props.setOnEdit(true)}
+								onClick={() => props?.setOnEdit(true)}
 							>
 								<EditOutlined />
 								{ !isMobile && "Chỉnh sửa"}
@@ -53,10 +55,11 @@ export function CvElementContainer(props: ElementProps = {
 					}
 					{
 						props.editable && props.isEditing && (
-							<Col span={3}>
+							<Col style={{ width: "fit-content" }}>
 								<Button
+									type="primary"
 									size={isDesktop ? "large" : "medium" as SizeType}
-									onClick={() => props.setOnEdit(false)}
+									onClick={() => props?.setOnEdit(false)}
 								>
 									<SaveOutlined />
 									{ !isMobile && "Lưu"}
@@ -65,6 +68,8 @@ export function CvElementContainer(props: ElementProps = {
 						)
 					}
 				</Row>
+			</Col>
+			<Col span={24} style={{ display: "flex", justifyContent: "center" }}>
 				{props.children}
 			</Col>
 		</Row>

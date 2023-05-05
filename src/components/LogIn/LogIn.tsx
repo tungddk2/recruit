@@ -1,92 +1,52 @@
-import {Button, Divider, Form, Input, Row, Tooltip, Typography} from "antd";
-import { CloseOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
-import useBreakpoints from "../../hooks/useBreakpoints";
-import {ReactElement} from "react";
+import {ReactElement, useContext, useEffect, useState} from "react";
+import {useForm} from "antd/es/form/Form";
+import {Button, Divider, Form, Input, message, Modal, Row, Tooltip, Typography} from "antd";
+import {CloseOutlined, LockOutlined, MailOutlined} from "@ant-design/icons";
 import {GoogleIcon} from "../common/icons/GoogleIcon";
+import {FormItem} from "../SignIn";
+import {AuthContext} from "../../provider/AuthContext";
 
-const styles: {sm: React.CSSProperties, default: React.CSSProperties} = {
-	sm: {
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		padding: "0.5rem 1rem",
-		gap: "10px",
-		width: "100vw",
-		height: "fit-content",
-		borderRadius: "8px",
-		backgroundColor: "white",
-		flexDirection: "inherit",
-	},
-	default: {
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "center",
-		padding: "1rem 2rem",
-		gap: "10px",
-		width: "400px",
-		height: "fit-content",
-		borderRadius: "8px",
-		backgroundColor: "white",
-	},
-};
+type LogInState = {
+	visible: boolean;
+	setVisible: (visible: boolean) => void;
+}
 
-export const FormItem = (props: any) => {
-	// add style to Form.Item
-	let _style = {
-		width: "100%",
-		height: "fit-content",
-		marginBottom: "16px",
-		minHeight: "fit-content",
-	};
+export default function LogIn(props: LogInState): ReactElement {
+	const {visible, setVisible} = props;
+	const [form] = useForm();
+	const { login, user } = useContext(AuthContext);
+	const [messageApi, contextHolder] = message.useMessage();
+	const [loading, setLoading] = useState(false);
 
-	const { style, ...others } = props;
-
-	if (style) {
-		_style = {
-			...style,
-			width: "100%",
-			height: "fit-content",
-			minHeight: "fit-content",
-			marginBottom: 0,
-		};
+	const handleLogin = async () => {
+		try {
+			//setLoading(true);
+			const values = await form.validateFields();
+			const status = await login(values.email, values.password);
+			if (status) {
+				messageApi.success('Đăng nhập thành công');
+				setVisible(false);
+				//setLoading(false);
+			}
+		} catch (error) {
+			console.log('Failed to login');
+			messageApi.error('Đăng nhập thất bại');
+		}
 	}
 
-	return <Form.Item style={_style} {...others} />;
-};
-
-export default function SignIn(): ReactElement {
-	const style = useBreakpoints().smallerThan("md")
-		? styles.sm
-		: styles.default;
-
-	const [form] = Form.useForm();
-
 	return (
-		<div
-			style={{
-				width: "100vw",
-				height: "100vh",
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				flexDirection: "column",
-				backgroundColor: "rgba(0, 0, 0, 0.5)",
-			}}
+		<Modal
+			open={visible}
+			onCancel={() => setVisible(false)}
+			footer={null}
 		>
 			<Form
 				autoComplete="off"
-				style={style}
 				form={form}
 				onFinish={(values) => {
 					console.log(values);
 				}}
 			>
-				<FormItem style={{ textAlign: "right", marginRight: "-2rem" }}>
-					<Tooltip title="Đóng">
-						<Button type="text" shape="circle" icon={<CloseOutlined />} />
-					</Tooltip>
-				</FormItem>
 				<FormItem>
 					<Typography.Title level={3} style={{ textAlign: "center" }}>
 						Trải nghiệm cùng Recruit
@@ -120,10 +80,12 @@ export default function SignIn(): ReactElement {
 
 				<FormItem>
 					<Button
+						loading={loading}
 						type="primary"
 						style={{ width: "100%", fontWeight: 500 }}
 						size="large"
 						htmlType="submit"
+						onClick={handleLogin}
 					>
 						Đăng nhập
 					</Button>
@@ -153,6 +115,6 @@ export default function SignIn(): ReactElement {
 					</Row>
 				</FormItem>
 			</Form>
-		</div>
-	);
+		</Modal>
+	)
 }
